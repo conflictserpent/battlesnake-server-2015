@@ -377,6 +377,16 @@ __Example Snakes (that work, but suck)__
 
 ## Questions?
 
+We will go over these clarifications partway through the day.  If you have any other questions, just ask anyone in sendwithus gear!
+
+Q: How do I determine the life of my snake!?
+
+A: Once a snake has eaten food or killed another snake, they will return a 'last_eaten' field that gives the last turn they have grown.  Once the current turn is 100 greater than the turn they have last eaten, their life will be 0 and the snake will die.  If a snake has not yet eaten, this field will not exist on that snake, and should be treated as 0.
+
+Q: Where does my snake start?
+
+A: You will be given the starting coordinates of your snake when the first move is requested.  You must identify your own snake by its name.  All snakes start with a length of 3, but begin on a single coordinate.  The first two turns will grow off of this space, and then the snake will begin to move.
+
 Email [battlesnake@sendwithus.com](mailto:battlesnake@sendwithus.com).
 
 For more information or to register a team, visit [battlesnake.io](http://www.battlesnake.io).
