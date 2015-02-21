@@ -168,22 +168,22 @@ Describes the state of a single snake in a particular game.
 ##### Attributes
 
 * **name** - friendly name of this snake (must be unique)
-* **state** - snake state, one of ["alive", "dead"]
 * **coords** - ordered array of coordinates indicating location of this snake on the board (from head to tail)
 * **score** - current score
 * **color** - display color for this snake
 * **head_url** - full URL to 20x20 snake head image
 * **taunt** - latest string message to other snakes
+* **last_eaten** - last turn this snake has grown, use this to determine life/hunger level (This field only exists if the snake has grown this game.  If this field is not present, treat it as 0)
 
 ```javascript
 {
   "name": "Noodlez",
-  "state": "alive",
   "coords": [[0, 0], [0, 1], [0, 2], [1, 2]],
   "score": 4,
   "color": "#ff0000",
   "head_url": "http://img.server.com/snake_head.png",
-  "taunt": "I'm one slippery noodle"
+  "taunt": "I'm one slippery noodle",
+  "last_eaten": 3
 }
 ```
 
