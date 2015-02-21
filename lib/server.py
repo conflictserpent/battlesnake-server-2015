@@ -112,7 +112,15 @@ def game_turn(game_id):
 
 @bottle.get('/api/games')
 def games_list():
-    games = Game.find({'is_live': True}, limit=20)
+    games = Game.find({
+        'is_live': True,
+        'state': {
+            '$in': [
+                Game.STATE_PLAYING,
+                Game.STATE_DONE
+            ]
+        }
+    }, limit=50)
     data = []
     for game in games:
         obj = game.to_dict()
