@@ -11,8 +11,9 @@ API details and documentation will be released and discussed the morning of the 
 
 For more information or to register a team, visit [battlesnake.io](http://www.battlesnake.io).
 
-__Questions?__ Email [battlesnake@sendwithus.com](mailto:battlesnake@sendwithus.com). 
+__Questions?__ Email [battlesnake@sendwithus.com](mailto:battlesnake@sendwithus.com).
 
+If you weren't paying attention during the introduction, [here's what you missed](http://www.slideshare.net/sendwithus/battlesnake-2015-introduction).
 <br>
 
 #### Table of Contents
