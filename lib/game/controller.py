@@ -153,7 +153,7 @@ def get_moves(game_state, timeout):
                     moves.append({
                         'snake_name': snake['name'],  # Don't trust id from response
                         'move': None,
-                        'taunt': '...zzz...'
+                        'taunt': '!! SNAKE ERROR !!'
                     })
                     _log('%s timed out' % snake['name'])
                 else:
