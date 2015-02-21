@@ -357,7 +357,7 @@ __Starter Snakes__
 
 __Example Snakes (that work, but suck)__
 * Solid BattleSnake - [http://battlesnake-dylan.herokuapp.com](http://battlesnake-dylan.herokuapp.com)
-* Liam Neeson - [http://battlesnake-greedy.herokuapp.com](http://battlesnake-greedy.herokuapp.com)
+* Liam Neeson - [http://battlesnake-snaken.herokuapp.com](http://battlesnake-snaken.herokuapp.com)
 * Trouser Basilisk - [http://battlesnake-will.herokuapp.com](http://battlesnake-will.herokuapp.com)
 * faroutsnake - [http://mattsnake.herokuapp.com/](http://mattsnake.herokuapp.com)
 * Swift Snake - [http://battlesnake-jer2.herokuapp.com](http://battlesnake-jer2.herokuapp.com)
