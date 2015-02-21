@@ -380,7 +380,7 @@ var GameSidebar = React.createClass({
 var GameListItem = React.createClass({
     render: function () {
         var path = '/play/games/' + this.props.game._id
-        var tdStyles = { width: '25%' };
+        var tdStyles = { width: '20%' };
         var tbody = <tr></tr>;
 
         if (this.props.game.state === 'done') {
@@ -390,15 +390,28 @@ var GameListItem = React.createClass({
                     <td>length</td>
                     <td>food</td>
                     <td>kills</td>
+                    <td>killed by...</td>
                 </tr>
             );
             var snakeRows = this.props.game.stats.snakes.map(function (snake, i) {
+                var snakeStyles = {
+                    backgroundColor: snake.color
+                };
+
+                var deathMessage;
+                if (snake.died_on_turn) {
+                    deathMessage = snake.killed_by + ' on turn ' + snake.died_on_turn;
+                } else {
+                    deathMessage= 'n/a';
+                }
+
                 return (
                     <tr key={this.props.game.id + snake.name}>
-                        <td>{snake.name}</td>
+                        <td><img src={snake.head_url} style={snakeStyles} />{snake.name}</td>
                         <td className="text-center">{snake.coords.length}</td>
                         <td className="text-center">{snake.food_eaten || 0}</td>
                         <td className="text-center">{snake.kills || 0}</td>
+                        <td className="text-center">{deathMessage}</td>
                     </tr>
                 )
             }.bind(this));
@@ -422,6 +435,8 @@ var GameListItem = React.createClass({
                             <h4>Deadliest</h4>
                             <p>{this.props.game.stats.deadliest || '--'}</p>
                         </td>
+                        <td style={tdStyles}>
+                        </td>
                     </tr>
                     {snakeHeader}
                     {snakeRows}
@@ -440,7 +455,7 @@ var GameListItem = React.createClass({
             <table className="table table-bordered game-summary">
                 <thead>
                     <tr>
-                        <th colSpan="4">
+                        <th colSpan="5">
                             {watchLink}
                             <h1><a href={path}>{this.props.game._id}</a></h1>
                         </th>

@@ -380,7 +380,7 @@ var GameSidebar = React.createClass({displayName: "GameSidebar",
 var GameListItem = React.createClass({displayName: "GameListItem",
     render: function () {
         var path = '/play/games/' + this.props.game._id
-        var tdStyles = { width: '25%' };
+        var tdStyles = { width: '20%' };
         var tbody = React.createElement("tr", null);
 
         if (this.props.game.state === 'done') {
@@ -389,16 +389,29 @@ var GameListItem = React.createClass({displayName: "GameListItem",
                     React.createElement("td", null, "Snake Stats"), 
                     React.createElement("td", null, "length"), 
                     React.createElement("td", null, "food"), 
-                    React.createElement("td", null, "kills")
+                    React.createElement("td", null, "kills"), 
+                    React.createElement("td", null, "killed by...")
                 )
             );
             var snakeRows = this.props.game.stats.snakes.map(function (snake, i) {
+                var snakeStyles = {
+                    backgroundColor: snake.color
+                };
+
+                var deathMessage;
+                if (snake.died_on_turn) {
+                    deathMessage = snake.killed_by + ' on turn ' + snake.died_on_turn;
+                } else {
+                    deathMessage= 'n/a';
+                }
+
                 return (
                     React.createElement("tr", {key: this.props.game.id + snake.name}, 
-                        React.createElement("td", null, snake.name), 
+                        React.createElement("td", null, React.createElement("img", {src: snake.head_url, style: snakeStyles}), snake.name), 
                         React.createElement("td", {className: "text-center"}, snake.coords.length), 
                         React.createElement("td", {className: "text-center"}, snake.food_eaten || 0), 
-                        React.createElement("td", {className: "text-center"}, snake.kills || 0)
+                        React.createElement("td", {className: "text-center"}, snake.kills || 0), 
+                        React.createElement("td", {className: "text-center"}, deathMessage)
                     )
                 )
             }.bind(this));
@@ -421,6 +434,8 @@ var GameListItem = React.createClass({displayName: "GameListItem",
                         React.createElement("td", {style: tdStyles}, 
                             React.createElement("h4", null, "Deadliest"), 
                             React.createElement("p", null, this.props.game.stats.deadliest || '--')
+                        ), 
+                        React.createElement("td", {style: tdStyles}
                         )
                     ), 
                     snakeHeader, 
@@ -440,7 +455,7 @@ var GameListItem = React.createClass({displayName: "GameListItem",
             React.createElement("table", {className: "table table-bordered game-summary"}, 
                 React.createElement("thead", null, 
                     React.createElement("tr", null, 
-                        React.createElement("th", {colSpan: "4"}, 
+                        React.createElement("th", {colSpan: "5"}, 
                             watchLink, 
                             React.createElement("h1", null, React.createElement("a", {href: path}, this.props.game._id))
                         )
