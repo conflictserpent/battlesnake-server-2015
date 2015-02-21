@@ -1,6 +1,8 @@
-import time
+import json
+import requests
 import signal
 import sys
+import time
 
 from gevent import signal as gevent_signal
 
@@ -8,6 +10,22 @@ from lib.game.engine import Engine
 from lib.caller import AsyncCall
 from lib.game.models import Game, GameState
 
+SLACK_HOOK_URL = 'https://hooks.slack.com/services/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'
+BATTLESNAKE_URL = 'http://www.battlesnake.io/play/games'
+
+def _update_slack(game_id, message):
+    payload = {
+        'text': '<%s/%s|%s> %s' % (
+            BATTLESNAKE_URL, game_id, game_id, message
+        ),
+        'username': 'battlesnake-bot',
+        'icon_emoji': ":snake:"
+    }
+    headers = {'content-type': 'application/json'}
+    try:
+        r = requests.post(SLACK_HOOK_URL, data=json.dumps(payload), headers=headers, timeout=2)
+    except:
+        pass
 
 def _log(msg):
     print "[controller] %s" % str(msg)
@@ -88,6 +106,11 @@ def create_game(snake_urls, width, height, turn_time):
     # Save the first GameState
     game_state.insert()
 
+    if (len(snakes) > 1):
+        _update_slack(game.id, '%d brave snakes enter the grid: %s' 
+            % (len(snakes), ', '.join([snake['name'] for snake in snakes]))
+        )
+
     return (game, game_state)
 
 
@@ -163,14 +186,24 @@ def end_game(game, game_state):
     responses = AsyncCall(payload, urls, game.turn_time * 5)
     # Ignore responses. Suckers.
 
+    if (len(game_state.snakes + game_state.dead_snakes) > 1):
+        lose_phrase = 'loses' if len(game_state.dead_snakes) == 1 else 'lose'
+        _update_slack(game.id, 'has been decided. %s wins after %d turns! %s %s.' % (
+            game.stats['winner'], 
+            game_state.turn,
+            ', '.join([snake['name'] for snake in game_state.dead_snakes]),
+            lose_phrase
+        ))
+
     return
 
 
 def run_game(game):
 
     def sigterm_handler(*args, **kwargs):
-        game.state = Game.STATE_READY
-        game.save()
+        if game.state == Game.STATE_PLAYING:
+            game.state = Game.STATE_READY
+            game.save()
         _log('Handled SIGTERM for %s' % game)
         sys.exit(0)
 
