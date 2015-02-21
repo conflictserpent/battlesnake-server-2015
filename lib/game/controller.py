@@ -86,13 +86,18 @@ def create_game(snake_urls, width, height, turn_time):
                     # FREAK OUT
                     raise Exception('failed to contact snake: %s' % url)
 
-                snakes.append({
+                snake = {
                     'url': snake_url,
                     'color': response['color'],
                     'head_url': response.get('head_url', 'http://www.battlesnake.io/static/img/default_head.gif'),
                     'name': response['name'],
                     'taunt': response['taunt']
-                })
+                }
+
+                if snake in snakes:
+                    raise Exception('cannot snake name "%s" more than once' % (snake['name']))
+
+                snakes.append(snake)
 
     game.insert()
 
@@ -107,8 +112,8 @@ def create_game(snake_urls, width, height, turn_time):
     game_state.insert()
 
     if (len(snakes) > 1):
-        _update_slack(game.id, '%d brave snakes enter the grid: %s' 
-            % (len(snakes), ', '.join([snake['name'] for snake in snakes]))
+        _update_slack(game.id, '%d brave snakes enter the grid: %s' % (
+            len(snakes), ', '.join([s['name'] for s in snakes]))
         )
 
     return (game, game_state)
@@ -193,7 +198,7 @@ def end_game(game, game_state):
     if (len(game_state.snakes + game_state.dead_snakes) > 1):
         lose_phrase = 'loses' if len(game_state.dead_snakes) == 1 else 'lose'
         _update_slack(game.id, 'has been decided. %s wins after %d turns! %s %s.' % (
-            game.stats['winner'], 
+            game.stats['winner'],
             game_state.turn,
             ', '.join([snake['name'] for snake in game_state.dead_snakes]),
             lose_phrase

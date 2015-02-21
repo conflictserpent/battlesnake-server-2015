@@ -552,9 +552,9 @@ var GameCreate = React.createClass({displayName: "GameCreate",
                 alert(response.data.message);
             } else {
                 this._savePastState();
-                this.setState({ isLoading: false });
                 navigate('/play/games/' + response.data.game._id);
             }
+            this.setState({ isLoading: false });
         }.bind(this)).error(function (xhr, textStatus, errorThrown) {
             alert(xhr.responseJSON.message);
             this.setState({ isLoading: false });
