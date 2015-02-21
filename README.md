@@ -380,6 +380,8 @@ __Example Snakes (that work, but suck)__
 
 We will go over these clarifications partway through the day.  If you have any other questions, just ask anyone in sendwithus gear!
 
+FYI!  If you start a game with more than one snake sharing the same name, it will glitch and crash the game.  We will probably be pushing a fix out for this in a bit, but for now, make sure your snakes all have unique names (we recommend using your team name).
+
 Q: How do I determine the life of my snake!?
 
 A: Once a snake has eaten food or killed another snake, they will return a 'last_eaten' field that gives the last turn they have grown.  Once the current turn is 100 greater than the turn they have last eaten, their life will be 0 and the snake will die.  If a snake has not yet eaten, this field will not exist on that snake, and should be treated as 0.
