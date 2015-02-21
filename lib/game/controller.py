@@ -48,6 +48,9 @@ def start_game(game_id, manual):
 
 
 def create_game(snake_urls, width, height, turn_time):
+    if not snake_urls or len(snake_urls) == 0:
+        raise Exception('No snake urls added. You need at least one...')
+
     game = Game(width=width, height=height, turn_time=turn_time)
 
     # Fetch snakes
