@@ -11,8 +11,9 @@ API details and documentation will be released and discussed the morning of the 
 
 For more information or to register a team, visit [battlesnake.io](http://www.battlesnake.io).
 
-__Questions?__ Email [battlesnake@sendwithus.com](mailto:battlesnake@sendwithus.com). 
+__Questions?__ Email [battlesnake@sendwithus.com](mailto:battlesnake@sendwithus.com).
 
+If you weren't paying attention during the introduction, [here's what you missed](http://www.slideshare.net/sendwithus/battlesnake-2015-introduction).
 <br>
 
 #### Table of Contents
@@ -120,7 +121,7 @@ $300 Cash, Swag Pack
 $200, Swag Pack
 
 #### Heroku Award 
-Heroku Longboard [Register Here](heroku.getfeedback.com/battlesnake)
+Heroku Longboard [Register Here](http://heroku.getfeedback.com/battlesnake)
 
 #### Dropbox Award
 1TB Dropbox Space [Register Here](http://bit.ly/dropbox-battlesnake)
@@ -357,12 +358,13 @@ __Starter Snakes__
 
 __Example Snakes (that work, but suck)__
 * Solid BattleSnake - [http://battlesnake-dylan.herokuapp.com](http://battlesnake-dylan.herokuapp.com)
-* Liam Neeson - [http://battlesnake-greedy.herokuapp.com](http://battlesnake-greedy.herokuapp.com)
+* Liam Neeson - [http://battlesnake-snaken.herokuapp.com](http://battlesnake-snaken.herokuapp.com)
 * Trouser Basilisk - [http://battlesnake-will.herokuapp.com](http://battlesnake-will.herokuapp.com)
-* faroutsnake - [http://mattsnake.herokuapp.com/](http://mattsnake.herokuapp.com)
+* faroutsnake - [http://mattsnake.herokuapp.com/faroutsnake](http://mattsnake.herokuapp.com/faroutsnake)
 * Swift Snake - [http://battlesnake-jer2.herokuapp.com](http://battlesnake-jer2.herokuapp.com)
 * Randosnake - [http://battlesnake-rando.herokuapp.com](http://battlesnake-rando.herokuapp.com)
-* Coward Snake - [battlesnake-coward.herokuapp.com](http://battlesnake-coward.herokuapp.com)
+* Coward Snake - [http://battlesnake-coward.herokuapp.com](http://battlesnake-coward.herokuapp.com)
+* tweety-snake - [http://mattsnake.herokuapp.com/tweety-snake](http://mattsnake.herokuapp.com/tweety-snake)
 
 <br>
 
@@ -375,6 +377,16 @@ __Example Snakes (that work, but suck)__
 <br>
 
 ## Questions?
+
+We will go over these clarifications partway through the day.  If you have any other questions, just ask anyone in sendwithus gear!
+
+Q: How do I determine the life of my snake!?
+
+A: Once a snake has eaten food or killed another snake, they will return a 'last_eaten' field that gives the last turn they have grown.  Once the current turn is 100 greater than the turn they have last eaten, their life will be 0 and the snake will die.  If a snake has not yet eaten, this field will not exist on that snake, and should be treated as 0.
+
+Q: Where does my snake start?
+
+A: You will be given the starting coordinates of your snake when the first move is requested.  You must identify your own snake by its name.  All snakes start with a length of 3, but begin on a single coordinate.  The first two turns will grow off of this space, and then the snake will begin to move.
 
 Email [battlesnake@sendwithus.com](mailto:battlesnake@sendwithus.com).
 
