@@ -392,6 +392,7 @@ __Example Snakes (that work, but suck)__
 * Randosnake - [http://battlesnake-rando.herokuapp.com](http://battlesnake-rando.herokuapp.com)
 * Coward Snake - [http://battlesnake-coward.herokuapp.com](http://battlesnake-coward.herokuapp.com)
 * tweety-snake - [http://mattsnake.herokuapp.com/tweety-snake](http://mattsnake.herokuapp.com/tweety-snake)
+* DogeSnake - [http://dogesnake.herokuapp.com](http://dogesnake.herokuapp.com)
 
 <br>
 
