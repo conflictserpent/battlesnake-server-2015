@@ -298,6 +298,7 @@ class Engine(object):
                     if len(snake['coords']) <= len(check_snake['coords']):
                         kill.append(snake['name'])
                         snake['killed_by'] = check_snake['name']
+                        check_snake['kills'] = check_snake.get('kills', 0) + 1
                     continue
 
                 # Head to Body Collision
