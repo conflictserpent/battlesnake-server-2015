@@ -476,7 +476,12 @@ var GameListItem = React.createClass({displayName: "GameListItem",
                     React.createElement("tr", null, 
                         React.createElement("th", {colSpan: "5"}, 
                             watchLink, 
-                            React.createElement("h1", null, React.createElement("a", {href: path}, this.props.game._id))
+                            React.createElement("h1", null, 
+                                React.createElement("a", {href: path}, this.props.game._id), 
+                                React.createElement("span", {className: "muted small"}, 
+                                    this.props.game.width, " × ", this.props.game.height
+                                )
+                            )
                         )
                     )
                 ), 

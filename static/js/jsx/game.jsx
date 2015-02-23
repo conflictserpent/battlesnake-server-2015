@@ -476,7 +476,12 @@ var GameListItem = React.createClass({
                     <tr>
                         <th colSpan="5">
                             {watchLink}
-                            <h1><a href={path}>{this.props.game._id}</a></h1>
+                            <h1>
+                                <a href={path}>{this.props.game._id}</a>
+                                <span className="muted small">
+                                    {this.props.game.width} &times; {this.props.game.height}
+                                </span>
+                            </h1>
                         </th>
                     </tr>
                 </thead>

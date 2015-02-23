@@ -56,7 +56,8 @@ table.game-summary .snakes-heading {
 	border-color: #F8F568;
 }
 
-p {
+p,
+.muted {
     color: #999;
 }
 
@@ -228,6 +229,13 @@ a:hover {
     font-size: 18px;
     text-transform: uppercase;
     margin: 5px;
+}
+.game-summary h1 a {
+    padding-right: 10px;
+}
+
+.game-summary h1 .small {
+    font-size: 15px;
 }
 
 
