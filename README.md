@@ -1,3 +1,6 @@
+
+## Pools have been decided.  Please come up to the stage and submit your snake url.
+
 # BattleSnake 2015
 #### presented by [sendwithus](https://www.sendwithus.com), powered by [Heroku](http://heroku.com)
 
@@ -132,6 +135,30 @@ __Swag Pack Awards__
 * Never Surrender Snake (longest)
 
 <br>
+
+## Tournament Details
+
+Tournament starts at 6:00.	
+All snake urls must be submitted by this time.	
+Tournament games will be played on a 15x15 board.	
+There will be 3 rounds total.	
+Rounds will consist of Best of 3 games between up to 6 snakes.	
+Each game awards points as follows:	
+* 1st:	5 pts
+* 2nd:	3 pts
+* 3rd:	2 pts
+* 4th:	1 pt
+* 5-6th:	0 pts
+<br>
+If two snakes die on the same turn, tiebreakers work as follows:	
+<br>
+* 1) Longest snake	
+* 2) Most kills	
+* 3) Both snakes receive the lesser # of pts	
+<br>
+The x snakes with the highest # of points advance to the next round.	
+If two or more snakes tie for round advancement, a tiebreaker game will be held between the tied snakes.	
+The finals work the same as the previous rounds, except there will be only 4 players, and the round is a best of 5 games.	
 
 ## Game Rules
 
@@ -365,6 +392,7 @@ __Example Snakes (that work, but suck)__
 * Randosnake - [http://battlesnake-rando.herokuapp.com](http://battlesnake-rando.herokuapp.com)
 * Coward Snake - [http://battlesnake-coward.herokuapp.com](http://battlesnake-coward.herokuapp.com)
 * tweety-snake - [http://mattsnake.herokuapp.com/tweety-snake](http://mattsnake.herokuapp.com/tweety-snake)
+* DogeSnake - [http://dogesnake.herokuapp.com](http://dogesnake.herokuapp.com)
 
 <br>
 
