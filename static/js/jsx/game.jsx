@@ -81,6 +81,19 @@ var Game = React.createClass({
             this.setState(this.state);
         }
     },
+    handleRematch: function () {
+        this.setState({ isLoading: true });
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/games/' + this.props.gameId + '/rematch'
+        }).done(function (response) {
+            navigate('/play/games/' + response.data._id);
+            this.componentDidMount();
+        }.bind(this)).error(function (xhr, textStatus, errorThrown) {
+            this.setState({ isLoading: false });
+        }.bind(this));
+    },
     handleClickContinuous: function () {
         this.interval = setInterval(this.handleClickNextTurn, 400);
     },
@@ -176,6 +189,7 @@ var Game = React.createClass({
                         startAutomated={this.handleStart.bind(null, false)}
                         startManual={this.handleStart.bind(null, true)}
                         startReplay={this.handleReplay}
+                        rematch={this.handleRematch}
                         cancelReplay={this.handleCancelReplay}
                         pause={this.handlePause}
                         resume={this.handleResume}
@@ -327,6 +341,11 @@ var GameSidebar = React.createClass({
                 <div>
                     <button className="btn btn-success stretch" onClick={this.props.startReplay}>
                         View Replay
+                    </button>
+                    <br />
+                    <br />
+                    <button className="btn btn-info stretch" onClick={this.props.rematch}>
+                        Rematch
                     </button>
                 </div>
             );

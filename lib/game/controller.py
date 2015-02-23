@@ -47,6 +47,17 @@ def start_game(game_id, manual):
     return game
 
 
+def rematch_game(game_id):
+    game = Game.find_one({'_id': game_id})
+    game_state = GameState.find({'game_id': game.id}, limit=1)[0]
+
+    snake_urls = []
+    for snake in game_state.snakes + game_state.dead_snakes:
+        snake_urls.append(snake['url'])
+
+    return create_game(snake_urls, game.width, game.height, game.turn_time)[0]
+
+
 def create_game(snake_urls, width, height, turn_time):
     if not snake_urls or len(snake_urls) == 0:
         raise Exception('No snake urls added. You need at least one...')
@@ -167,7 +178,7 @@ def get_moves(game_state, timeout):
 
 
 def next_turn(game):
-    game_states = GameState.find({'game_id': game.id})
+    game_states = GameState.find({'game_id': game.id}, limit=1)
 
     if len(game_states) > 0:
         game_state = game_states[0]

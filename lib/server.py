@@ -86,6 +86,16 @@ def game_start(game_id):
     return _json_response(game.to_dict())
 
 
+@bottle.post('/api/games/:game_id/rematch')
+def game_rematch(game_id):
+    try:
+        game = controller.rematch_game(game_id)
+    except Exception as e:
+        return bottle.abort(400, str(e))
+
+    return _json_response(game.to_dict())
+
+
 @bottle.put('/api/games/:game_id/pause')
 def game_pause(game_id):
     game = Game.find_one({'_id': game_id})
