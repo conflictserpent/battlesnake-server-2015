@@ -426,11 +426,19 @@ var GameListItem = React.createClass({displayName: "GameListItem",
 
                 return (
                     React.createElement("tr", {key: this.props.game.id + snake.name}, 
-                        React.createElement("td", null, React.createElement("img", {src: snake.head_url, style: snakeStyles}), snake.name), 
-                        React.createElement("td", {className: "text-center"}, snake.coords.length), 
-                        React.createElement("td", {className: "text-center"}, snake.food_eaten || 0), 
-                        React.createElement("td", {className: "text-center"}, snake.kills || 0), 
-                        React.createElement("td", {className: "text-center"}, deathMessage)
+                        React.createElement("td", {className: "snake-name"}, 
+                            React.createElement("img", {src: snake.head_url, style: snakeStyles}), 
+                            React.createElement("div", {className: "name"}, 
+                                snake.name
+                            ), 
+                            React.createElement("div", {className: "url"}, 
+                                snake.url
+                            )
+                        ), 
+                        React.createElement("td", {className: "text-center stat"}, snake.coords.length), 
+                        React.createElement("td", {className: "text-center stat"}, snake.food_eaten || 0), 
+                        React.createElement("td", {className: "text-center stat"}, snake.kills || 0), 
+                        React.createElement("td", {className: "text-center stat"}, deathMessage)
                     )
                 )
             }.bind(this));

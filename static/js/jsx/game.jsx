@@ -426,11 +426,19 @@ var GameListItem = React.createClass({
 
                 return (
                     <tr key={this.props.game.id + snake.name}>
-                        <td><img src={snake.head_url} style={snakeStyles} />{snake.name}</td>
-                        <td className="text-center">{snake.coords.length}</td>
-                        <td className="text-center">{snake.food_eaten || 0}</td>
-                        <td className="text-center">{snake.kills || 0}</td>
-                        <td className="text-center">{deathMessage}</td>
+                        <td className="snake-name">
+                            <img src={snake.head_url} style={snakeStyles} />
+                            <div className="name">
+                                {snake.name}
+                            </div>
+                            <div className="url">
+                                {snake.url}
+                            </div>
+                        </td>
+                        <td className="text-center stat">{snake.coords.length}</td>
+                        <td className="text-center stat">{snake.food_eaten || 0}</td>
+                        <td className="text-center stat">{snake.kills || 0}</td>
+                        <td className="text-center stat">{deathMessage}</td>
                     </tr>
                 )
             }.bind(this));

@@ -238,6 +238,29 @@ a:hover {
     font-size: 15px;
 }
 
+.game-summary .stat {
+    padding-top: 15px;
+}
+
+.game-summary .snake-name {
+    padding: 4;
+    padding-left: 60px;
+    position: relative;
+    height: 50px;
+}
+
+.game-summary .snake-name img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+}
+
+.game-summary .snake-name .url {
+    font-size: 14px;
+    color: #888;
+}
 
 /** HELPERS **/
 
