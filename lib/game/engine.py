@@ -25,6 +25,7 @@ class Engine(object):
     VALID_MOVES = [MOVE_UP, MOVE_DOWN, MOVE_LEFT, MOVE_RIGHT]
 
     STARVATION = 'starvation'
+    SUICIDE = 'itself'
     WALL = 'wall'
     LARGE_NUMBER = 999999
 
@@ -288,7 +289,7 @@ class Engine(object):
                 if snake['name'] == check_snake['name']:
                     if snake['coords'][0] in check_snake['coords'][1:]:
                         kill.append(snake['name'])
-                        snake['killed_by'] = check_snake['name']
+                        snake['killed_by'] = Engine.SUICIDE
                         continue
                     else:
                         continue

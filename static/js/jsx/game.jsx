@@ -73,7 +73,11 @@ var Game = React.createClass({
             this.state.isLoading = false;
 
             if (gameState.is_done) {
-                $('#game-summary-modal').modal('show');
+                $('#game-summary-modal').off('shown.bs.modal').on('shown.bs.modal', function () {
+                    console.log('hello');
+                    $(this).find('button').focus();
+                }).modal('show');
+
                 this.state.isReplay = false;
                 this.state.game.state = 'done';
             }
@@ -259,15 +263,20 @@ var GameSidebarSnake = React.createClass({
 
         var tauntStyles = {
             display: this.state.tauntToShow ? 'block' : 'none',
-            opacity: 1.3 - (this.state.tauntCount / 10),
-            borderColor: this.props.isDead ? '#9e0000' : this.props.snake.color
+            opacity: 1.3 - (this.state.tauntCount / 10)
         };
+
+        if (!this.props.isDead) {
+            tauntStyles.borderColor = this.props.snake.color;
+        }
 
         var life = 100 - (this.props.turn - (this.props.snake.last_eaten || 0))
 
         if (this.props.isDead || life < 0) {
             life = 0;
         }
+
+        var tauntClass = this.props.isDead ? 'dead' : 'alive';
 
         return (
             <div className="snake-block">
@@ -284,7 +293,7 @@ var GameSidebarSnake = React.createClass({
                         kills: {this.props.snake.kills || 0}
                     </div>
                 </div>
-                <div className="taunt" style={tauntStyles}>{this.state.tauntToShow}</div>
+                <div className={'taunt ' + tauntClass} style={tauntStyles}>{this.state.tauntToShow}</div>
             </div>
         )
     }
@@ -704,7 +713,7 @@ var GameCreate = React.createClass({
                             <input type="number"
                                 className="form-control"
                                 placeholder="width"
-                                min="10"
+                                min="5"
                                 max="50"
                                 value={this.state.currentWidth}
                                 onChange={this.handleWidthChange}/>
@@ -714,7 +723,7 @@ var GameCreate = React.createClass({
                             <input type="number"
                                 className="form-control"
                                 placeholder="height"
-                                min="10"
+                                min="5"
                                 max="50"
                                 value={this.state.currentHeight}
                                 onChange={this.handleHeightChange}
@@ -724,7 +733,7 @@ var GameCreate = React.createClass({
                             <label>turn time</label>
                             <input type="number"
                                 step="0.1"
-                                min="0.6"
+                                min="0.1"
                                 className="form-control"
                                 placeholder="1.0 (seconds)"
                                 value={this.state.currentTimeout}
@@ -771,7 +780,7 @@ var GameOverModal = React.createClass({
                             Winner: {winningSnake}
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-success" data-dismiss="modal">Continue</button>
+                            <button type="submit" className="btn btn-success" data-dismiss="modal">Continue</button>
                         </div>
                     </div>
                 </div>
