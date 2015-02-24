@@ -1,4 +1,5 @@
 import json
+import os
 import requests
 import signal
 import sys
@@ -10,22 +11,26 @@ from lib.game.engine import Engine
 from lib.caller import AsyncCall
 from lib.game.models import Game, GameState
 
-SLACK_HOOK_URL = 'https://hooks.slack.com/services/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'
+
 BATTLESNAKE_URL = 'http://www.battlesnake.io/play/games'
+SLACK_HOOK_URL = os.environ.get('SLACK_HOOK_URL')
+
 
 def _update_slack(game_id, message):
-    payload = {
-        'text': '<%s/%s|%s> %s' % (
-            BATTLESNAKE_URL, game_id, game_id, message
-        ),
-        'username': 'battlesnake-bot',
-        'icon_emoji': ":snake:"
-    }
-    headers = {'content-type': 'application/json'}
-    try:
-        r = requests.post(SLACK_HOOK_URL, data=json.dumps(payload), headers=headers, timeout=2)
-    except:
-        pass
+    if SLACK_HOOK_URL:
+        try:
+            payload = {
+                'text': '<%s/%s|%s> %s' % (
+                    BATTLESNAKE_URL, game_id, game_id, message
+                ),
+                'username': 'battlesnake-bot',
+                'icon_emoji': ":snake:"
+            }
+            headers = {'content-type': 'application/json'}
+            requests.post(SLACK_HOOK_URL, data=json.dumps(payload), headers=headers, timeout=2)
+        except:
+            pass
+
 
 def _log(msg):
     print "[controller] %s" % str(msg)
