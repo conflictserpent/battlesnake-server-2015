@@ -1,6 +1,3 @@
-
-## Pools have been decided.  Please come up to the stage and submit your snake url.
-
 # BattleSnake 2015
 #### presented by [sendwithus](https://www.sendwithus.com), powered by [Heroku](http://heroku.com)
 
