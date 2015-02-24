@@ -1,6 +1,3 @@
-
-## Pools have been decided.  Please come up to the stage and submit your snake url.
-
 # BattleSnake 2015
 #### presented by [sendwithus](https://www.sendwithus.com), powered by [Heroku](http://heroku.com)
 
@@ -10,7 +7,7 @@ Teams from local schools and tech companies write AI clients for the game Battle
 
 Last snake standing wins, prizes will be awarded to the most successful teams.
 
-API details and documentation will be released and discussed the morning of the event.
+API details and documentation swill be released and discussed the morning of the event.
 
 For more information or to register a team, visit [battlesnake.io](http://www.battlesnake.io).
 
@@ -192,7 +189,7 @@ BattleSnake is an adaptation of the classic video game "Snake" where you control
 
 ### Sportsmanship
 
-* Fuck sportmanship.
+* Fuck sportsmanship.
 
 <br>
 
