@@ -170,7 +170,7 @@ def get_moves(game_state, timeout):
                 else:
                     moves.append({
                         'snake_name': snake['name'],  # Don't trust id from response
-                        'move': response['move'],
+                        'move': response.get('move', 'no_move'),
                         'taunt': response.get('taunt', '')
                     })
 
